@@ -40,7 +40,7 @@ export const ProductsProvider = ({ children }) => {
 
   useEffect(() => {
     dispatch({ type: "GET_FEATURED", payload: listings });
-  }, [state]);
+  }, []);
 
   return (
     <ProductsContext.Provider value={{ ...state }}>

@@ -31,12 +31,35 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: "SET_LIST" });
   };
 
+  const updateSort = (value) => {
+    dispatch({ type: "UPDATE_SORT", payload: value });
+  };
+
+  const updateFilters = (name, value) => {
+    dispatch({ type: "UPDATE_FILTERS" });
+  };
+  const clearFilters = () => {
+    dispatch({ type: "CLEAR_FILTERS" });
+  };
+
   useEffect(() => {
     dispatch({ type: "LOAD_PRODUCTS", payload: products });
   }, [products]);
+  useEffect(() => {
+    dispatch({ type: "SORT_PRODUCTS" });
+  }, [state.sort]);
 
   return (
-    <FilterContext.Provider value={{ ...state, gridView, listView }}>
+    <FilterContext.Provider
+      value={{
+        ...state,
+        gridView,
+        listView,
+        updateSort,
+        updateFilters,
+        clearFilters,
+      }}
+    >
       {children}
     </FilterContext.Provider>
   );
