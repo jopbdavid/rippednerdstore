@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
+import { formatPrice } from "../others/formatPrice";
 
-const Product = ({ id, title, description, url, img }) => {
+const Product = ({ id, title, description, url, img, price }) => {
   return (
     <Wrapper>
       <div className="container">
@@ -14,7 +15,7 @@ const Product = ({ id, title, description, url, img }) => {
       </div>
       <footer>
         <h5>{title}</h5>
-        <p>{description}</p>
+        <p>{formatPrice(price)}</p>
       </footer>
     </Wrapper>
   );
@@ -72,12 +73,12 @@ const Wrapper = styled.article`
     font-weight: 400;
   }
   footer h5 {
-    font-weight: 600;
+    font-weight: 800;
   }
 
   footer p {
     color: var(--clr-primary-5);
-    // letter-spacing: var(--spacing);
+    letter-spacing: var(--spacing);
   }
 `;
 export default Product;

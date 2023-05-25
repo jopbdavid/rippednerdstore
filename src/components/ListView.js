@@ -2,11 +2,30 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Product from "./Product";
+import { formatPrice } from "../others/formatPrice";
 
-const ListView = () => {
+const ListView = ({ products }) => {
   return (
     <Wrapper>
-      <div className="products-container">List</div>
+      <div className="products-container">
+        {products.map((product) => {
+          const { id, img, title, price, description } = product;
+          return (
+            <article key={id}>
+              <img src={img} name={title} />
+              <div>
+                <h4>{title}</h4>
+                <h5 className="price">{formatPrice(price)}</h5>
+
+                <p>{description.substring(0, 150)} . . .</p>
+                <Link to={`/products/${id}`} className="btn">
+                  Details
+                </Link>
+              </div>
+            </article>
+          );
+        })}
+      </div>
     </Wrapper>
   );
 };

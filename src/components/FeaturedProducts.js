@@ -4,8 +4,10 @@ import styled from "styled-components";
 import Error from "./Error";
 import Loading from "./Loading";
 import Product from "./Product";
+import { useProductsContext } from "../context/products_context";
 
 const FeaturedProducts = () => {
+  const { featured_products: featured } = useProductsContext();
   // if (Loading) return <Loading />;
   // if (Error) return <Error />;
   return (
@@ -15,9 +17,9 @@ const FeaturedProducts = () => {
         <div className="underline"></div>
       </div>
       <div className="section-center featured">
-        {/* {featured.slice(0, 3).map((product) => {
+        {featured.slice(0, 3).map((product) => {
           return <Product key={product.id} {...product} />;
-        })} */}
+        })}
       </div>
       <Link to="/products" className="btn">
         All products

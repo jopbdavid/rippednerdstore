@@ -23,12 +23,20 @@ export const FilterProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { products } = useProductsContext();
 
+  const gridView = () => {
+    dispatch({ type: "SET_GRID" });
+  };
+
+  const listView = () => {
+    dispatch({ type: "SET_LIST" });
+  };
+
   useEffect(() => {
     dispatch({ type: "LOAD_PRODUCTS", payload: products });
   }, [products]);
 
   return (
-    <FilterContext.Provider value={{ ...state }}>
+    <FilterContext.Provider value={{ ...state, gridView, listView }}>
       {children}
     </FilterContext.Provider>
   );

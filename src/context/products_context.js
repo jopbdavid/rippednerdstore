@@ -38,9 +38,9 @@ export const ProductsProvider = ({ children }) => {
   //     }
   //   };
 
-  //   useEffect(() => {
-  //     fetchProducts(url);
-  //   });
+  useEffect(() => {
+    dispatch({ type: "GET_FEATURED", payload: listings });
+  }, [state]);
 
   return (
     <ProductsContext.Provider value={{ ...state }}>
