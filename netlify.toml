@@ -1,0 +1,10 @@
+[[redirects]]
+  from = "/*"
+  to = ""https://openapi.etsy.com/v3/application/shops/29234009/listings/active""
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
